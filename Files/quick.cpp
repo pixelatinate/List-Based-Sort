@@ -15,9 +15,17 @@ Node *concatenate(Node *left, Node *right);
 
 void quick_sort(List &l, bool numeric) {
 	
+	//qsort(l.head, numeric);
 }
 
 Node *qsort(Node *head, bool numeric) {
+	Node *pivot = head;
+	//Node *left = new Node;
+	//Node *right = new Node;
+	//call partition to divide list
+	//partition(head, pivot, left, right)
+	//call concatenate to conquer
+
 }
 
 void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric) {
