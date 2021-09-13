@@ -1,5 +1,5 @@
 #include "volsort.h"
-
+#include <iostream>
 
 List::List() {
     head = new Node;
@@ -73,9 +73,9 @@ bool node_string_compare(const Node *a, const Node *b){
 
 void dump_node(Node *n){					// implement in this file (volsort.h) to make it easier for TAs to grade
   while(n != NULL){
-    cout << "int: " << n->number << endl;
-    cout << "string: " << n->string << endl;
-    n = n->next;
+	 std::cout << "int: " << n->number << std::endl;
+	 std::cout << "string: " << n->string << std::endl;
+	n = n->next;
   }
 }
 
