@@ -20,15 +20,38 @@ void quick_sort(List &l, bool numeric) {
 
 Node *qsort(Node *head, bool numeric) {
 	Node *pivot = head;
-	//Node *left = new Node;
-	//Node *right = new Node;
+	//Node *left = NULL;
+	//Node *right = NULL;
 	//call partition to divide list
-	//partition(head, pivot, left, right)
-	//call concatenate to conquer
-
+	//partition(head, pivot, left, right, numeric)
+	//concatenate(left, right);
+	//qsort(head, numeric);
 }
 
 void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric) {
+	Node *current = head;
+	Node *prev = NULL;
+	Node *leftHead, *rightHead;
+	//base cases
+	
+	//looking through list
+	while(current->next != NULL){
+		if(numeric){
+			if(node_number_compare(current, prev)){
+				left->next = prev;
+			} else
+				right->next = prev;
+		} else {
+			if(node_string_compare(current, prev))
+				left->next = prev;
+			else
+				right->next = prev;
+		}
+		prev = current;
+		current = current->next;		
+	}
+
+		
 }
 
 //joins left and right sublists
