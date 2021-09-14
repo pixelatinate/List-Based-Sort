@@ -2,8 +2,7 @@
 #include <iostream>
 
 List::List() {
-    head = new Node;
-    head -> next = NULL;
+    head = NULL;
     size = 0;
 }
 
@@ -17,7 +16,7 @@ List::~List() {
     head = 0;
 }
 void List::push_front(const std::string &s){
-    int value = stoi(s);
+  /*  int value = stoi(s);
     Node *newnode , *start;
     start = head;
     while (start -> next != NULL) 
@@ -27,10 +26,28 @@ void List::push_front(const std::string &s){
     newnode -> string = s;
     newnode -> next = NULL;
     start -> next =  newnode;
+	*/
+	if(head==NULL)
+	{
+		head = new Node;
+		head->string = s;
+		head->number=stoi(s);
+		size=1;
+	}
+	else{
+		Node* newnode = new Node;
+		newnode->string = s;
+		newnode->number = stoi(s);
+		Node* temp = head;
+		newnode->next = temp;
+		head = newnode;
+		head->next = temp;
+		size++;
+	}
 }
 
 bool node_number_compare(const Node *a, const Node *b){
-  int lengthA = sizeof(a);
+/*  int lengthA = sizeof(a);
   int lengthB = sizeof(b);
 
   if(lengthA > lengthB){
@@ -48,10 +65,12 @@ bool node_number_compare(const Node *a, const Node *b){
         b = b->next;
     }
     return false;
+	*/
+	return a->number < b->number;
 }
 
 bool node_string_compare(const Node *a, const Node *b){
-  int lengthA = sizeof(a);
+  /*int lengthA = sizeof(a);
   int lengthB = sizeof(b);
 
   if(lengthA > lengthB){
@@ -69,6 +88,15 @@ bool node_string_compare(const Node *a, const Node *b){
         b = b->next;
     }
     return false;
+	*/
+	return a->string < b->string;
+}
+int c_node_number_compare(const void *a, const void *b){
+	return 0;
+}
+
+int c_node_string_compare(const void *a, const void *b){
+	return 0;
 }
 
 void dump_node(Node *n){					// implement in this file (volsort.h) to make it easier for TAs to grade

@@ -1,7 +1,7 @@
 // merge.cpp
 
 #include "volsort.h"
-
+#include<iostream>
 // Prototypes
 
 Node *msort(Node *head, bool numeric);
@@ -20,7 +20,9 @@ void merge_sort(List &l, bool numeric) {
 Node *msort(Node *head, bool numeric) {
 	Node* left;
 	Node* right;
-
+	for(Node* temp=head; temp!=NULL; temp=temp->next)
+		std::cout<< temp->number<<std::endl;
+	std::cout<<std::endl;	
 	// Handles if list length is <= 1
 	if ((head == NULL) || (head->next == NULL))
 		return head;
@@ -29,7 +31,11 @@ Node *msort(Node *head, bool numeric) {
 	left = msort(left, numeric);
 	right = msort(right, numeric);
 	merge(left, right, numeric);
-	cout<<"in recursive function";
+//	cout<<"in recursive function";
+	std::cout<<"after merge \n";
+	for(Node* temp=head; temp!=NULL; temp=temp->next)
+		std::cout<< temp->number<<std::endl;
+	std::cout<<std::endl;	
 	return head;
 	
 }
@@ -67,7 +73,7 @@ Node *merge(Node *left, Node *right, bool numeric) {
 		return left;
 
 	while(left!=NULL && right!=NULL){
-		cout<<"in while loop";
+//		cout<<"in while loop";
 		if(sorted==NULL){
 			if(numeric){
 				if(node_number_compare(left,right)){
