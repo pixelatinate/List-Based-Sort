@@ -19,6 +19,8 @@ void quick_sort(List &l, bool numeric) {
 
 Node *qsort(Node *head, bool numeric) {
 	Node *pivot = head;
+	Node *leftSorted, *rightSorted;
+	Node *sorted;
 	//base case size 0 or 1 for list
 	if(head == NULL or head->next == NULL)
 		return head;
@@ -26,10 +28,11 @@ Node *qsort(Node *head, bool numeric) {
 	Node *right = NULL;
 	//call partition to divide list
 	partition(head, pivot, left, right, numeric);
+	leftSorted = qsort(left,numeric);
+	rightSorted = qsort(right,numeric);
 	//need to add pivot to one of the lists before concatenate
-	concatenate(left, right);
-	//qsort(left half, numeric);
-	//qsort(right half, numeric);
+	sorted = concatenate(leftSorted, rightSorted);
+	return sorted;
 }
 
 void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric) {
@@ -44,14 +47,19 @@ void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric)
 				if(left == NULL){
 					leftHead = current;
 					left = current;
-				} else
+					left->next = NULL;
+				} else {
 					left->next = current;
+					left = left->next;
+				}
 			} else {
 			 	if(right == NULL){
 					rightHead = current;
 					right = current;
+					right->next = NULL;
 				} else {
 					right->next = current;
+					right = right->next;
 				}
 			}
 		} else {
@@ -59,23 +67,29 @@ void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric)
 				if(left == NULL){
 					leftHead = current;
 					left = current;
-				} else
+					left->next = NULL;
+				} else {
 					left->next = current;
+					left = left->next;
+				}
 			} else {
 			 	if(right == NULL){
 					rightHead = current;
 					right = current;
+					right->next = NULL;
 				} else {
 					right->next = current;
+					right = right->next;
 				}
 			}
 		}
 		//increment
 		current = current->next;
-
 	}
-	//update left and right sublists so pivot is in place
-		
+	//update leftHead and rightHead sublists and put pivot in place
+	//want to put pivot where rightHead is
+	//left = leftHead;
+	//right = rightHead;
 }
 
 //joins left and right sublists
