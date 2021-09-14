@@ -2,9 +2,6 @@
 
 #include "volsort.h"
 
-#include <iostream>
-
-using namespace std;
 // Prototypes
 
 Node *msort(Node *head, bool numeric);
@@ -15,7 +12,7 @@ Node *merge(Node *left, Node *right, bool numeric);
 
 // Performs the merge sort algorithm
 void merge_sort(List &l, bool numeric) {
-	msort(l.head, numeric);
+	l.head=msort(l.head, numeric);
 }
 
 // Recursive - Calls split to divide and calls merge to conquer
@@ -27,12 +24,14 @@ Node *msort(Node *head, bool numeric) {
 	// Handles if list length is <= 1
 	if ((head == NULL) || (head->next == NULL))
 		return head;
-	
+
 	split(head, left, right);
 	left = msort(left, numeric);
 	right = msort(right, numeric);
 	merge(left, right, numeric);
+	cout<<"in recursive function";
 	return head;
+	
 }
 
 // Splits the list
@@ -60,23 +59,74 @@ void split(Node *head, Node *&left, Node *&right) {
 // Combines left and right lists and returns the new head
 Node *merge(Node *left, Node *right, bool numeric) {
 	Node* sorted = NULL;
-
+	Node* head=NULL;
 	// Handles if either node is empty
 	if (left == NULL)
 		return right;
 	else if (right == NULL)
 		return left;
 
-	while(left != NULL && right !=NULL){
-		if(left <= right){
-			sorted = left;
-			sorted->next = right;
+	while(left!=NULL && right!=NULL){
+		cout<<"in while loop";
+		if(sorted==NULL){
+			if(numeric){
+				if(node_number_compare(left,right)){
+					sorted = left;
+					head=sorted;
+					left=left->next;
+				}
+				else{
+					sorted = right;
+					head=sorted;
+					right=right->next;
+				}
+			}			
+			else{	
+				if(node_string_compare(left, right)){
+					sorted = left;
+					head=sorted;
+					left=left->next;
+				}
+				else{
+					sorted = right;
+					head=sorted;
+					right=right->next;
+				}		
+			}	
 		}
-		else
-			sorted = right;
-		sorted->next = left;
+		else{
+			if(numeric){
+				if(node_number_compare(left,right)){
+					sorted->next = left;
+					left = left->next;
+				}
+				else{
+					sorted->next=right;
+					right=right->next;
+				}
+				sorted=sorted->next;
+			}
+			else{
+				if(node_string_compare(left,right)){
+					sorted->next = left;
+					left = left->next;
+					
+				}
+				else{
+					sorted->next=right;
+					right=right->next;
+				}
+				sorted=sorted->next;
+			}	
+		}
+	
 	}
-	return sorted;
-}
+	//Checks for a final node containing a value
+	if(left != NULL)
+		sorted->next=left;
+	else
+		sorted->next=right;
 
+	return head;
+}
 
