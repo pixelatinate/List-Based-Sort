@@ -24,10 +24,10 @@ A sorting utility called "volsort" mimics the UNIX tool "sort" with a twist: the
 | MERGE    | 100k    |    0:00.20     |      9748 kB        |
 | MERGE    | 1M      |    0:19.05     |     66000 kB        |
 | MERGE    | 10M     |    3:11.14     |    628324 kB        |
-| QUICK    | 10      |                |                     |
-| QUICK    | 100     |                |                     |
-| QUICK    | 1k      |                |                     |
-| QUICK    | 10k     |                |                     |
-| QUICK    | 100k    |                |                     |
-| QUICK    | 1M      |                |                     |
+| QUICK    | 10      |    0:00.00            |  3488 kB                   |
+| QUICK    | 100     |    0:00.00            |  3252 kB                   |
+| QUICK    | 1k      |    0:00.00            |  3400 kB                   |
+| QUICK    | 10k     |    0:00.01            |  3888 kB                   |
+| QUICK    | 100k    |    0:01.16             |  9544 kB                   |
+| QUICK    | 1M      |    0:18.60            |   65904 kB                  |
 | QUICK    | 10M     |                |                     |
