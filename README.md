@@ -38,4 +38,4 @@ Below is a table including the time it takes to run each sort and how much memor
 | QUICK    | 10k     |    0:00.01            |  3888 kB                   |
 | QUICK    | 100k    |    0:01.16             |  9544 kB                   |
 | QUICK    | 1M      |    0:18.60            |   65904 kB                  |
-| QUICK    | 10M     |                |                     |
+| QUICK    | 10M     |    17:35.57            |          628980 kB           |
