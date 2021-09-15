@@ -2,21 +2,21 @@
 A sorting utility called "volsort" mimics the UNIX tool "sort" with a twist: the underlying container must be a linked list.
 
 | Mode     | Size    | Elapsed Time   | Memory Consumption  |
-|----------|---------|----------------|---------------------|
-| STL      | 10      |                |                     |
-| STL      | 100     |                |                     |
-| STL      | 1k      |                |                     |
-| STL      | 10k     |                |                     |
-| STL      | 100k    |                |                     |
-| STL      | 1M      |                |                     |
-| STL      | 10M     |                |                     |
-| QSORT    | 10      |                |                     |
-| QSORT    | 100     |                |                     |
-| QSORT    | 1k      |                |                     |
-| QSORT    | 10k     |                |                     |
-| QSORT    | 100k    |                |                     |
-| QSORT    | 1M      |                |                     |
-| QSORT    | 10M     |                |                     |
+|:--------:|:-------:|:--------------:|:-------------------:|
+| STL      | 10      |  0:00.00              |        3232 kB             |
+| STL      | 100     |  0:00.00              |       3244 kB              |
+| STL      | 1k      |  0:00.00              |      3484 kB               |
+| STL      | 10k     |  0:00.01              |      4232 kB               |
+| STL      | 100k    |  0:01.15              |  10324 kB                 |
+| STL      | 1M      |  0:13.59             |   17713 kB                  |
+| STL      | 10M     |  2:39.32              |   760420 kB                  |
+| QSORT    | 10      |  0:00.00              |  3488 kB                  |
+| QSORT    | 100     |  0:00.00              |  3408 kB                  |
+| QSORT    | 1k      |  0:00.00             |  3488 kB                   |
+| QSORT    | 10k     |  0:00.01              | 4316 kB                    |
+| QSORT    | 100k    |  0:01.09              | 11268 kB                   |
+| QSORT    | 1M      |  0:13.79              | 81748 kB                    |
+| QSORT    | 10M     |  2:28.96              | 785080 kB                    |
 | MERGE    | 10      |    0:00.00     |      3272 kB        |
 | MERGE    | 100     |    0:00.00     |      3300 kB        |
 | MERGE    | 1k      |    0:00.00     |      3308 kB        |
