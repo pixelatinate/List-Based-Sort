@@ -1,5 +1,5 @@
 // stl.cpp
-//Worked on by Katie Nuchols
+// Worked on by Katie Nuchols
 
 #include "volsort.h"
 

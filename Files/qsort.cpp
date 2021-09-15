@@ -1,41 +1,47 @@
 // qsort.cpp
+// Worked on by Swasti Mishra
 
-#include "volsort.h"
+# include "volsort.h"
 
-#include <cstdlib>
-#include <array>
-#include <iostream>
-#include <vector>
-using namespace std;
+# include <vector>
+# include <iostream>
 
-void qsort_sort(List &l, bool numeric) { 
-    vector<Node *> numbers ;                                                 //create a vector for storing
-    Node *main = l.head;
-    Node **qArray ;
+using namespace std ;
 
-    int length = findlength(l);                                             //get the length of the list
-    for(int i = 0; i < length; i++){                                        //find all of the elements in the list and store in a vector
-        numbers.push_back(main);
-        main = main->next;                                                  //go to the next element in the file
+void qsort_sort( List &l, bool numeric ) { 
+    
+    // Variables
+    Node *main = l.head ;
+    vector<Node *> numbers ;
+
+    // Finds length of the list. We don't have to define it again
+    int length = findlength( l ) ;
+
+    // Pushes the list into a vector
+    for(int i = 0; i < length; i++){
+        numbers.push_back( main ) ;
+        main = main->next ;
     }
-    qArray = new Node*[ length ] ;
-
-    for ( unsigned int i = 0 ; i < numbers.size() ; i++ ){
-        qArray[ i ] = numbers[ i ] ;
-    }
-
-    if(numeric){
-        qsort(qArray, length, sizeof( qArray[0] ), c_node_number_compare) ;          //use the compare function and the qsort to run through the vector
+    
+    // Compares using c-style compares and qsort
+    if( numeric ){
+        qsort( &numbers[0] , numbers.size() , sizeof( Node* ) , c_node_number_compare ) ;
     }
     else{
-        qsort(qArray, length, sizeof( qArray[0] ), c_node_string_compare) ;          //use the compare function and the qsort to run through the vector
+        qsort( &numbers[0] , numbers.size() , sizeof( Node* ) , c_node_string_compare ) ;
     }
 
-    l.head = qArray[0];                                                    //get the head of the function
-    for(int i = 1; i <= length; i++){                                        //iterate through the vector and output information
-        qArray[i]->next = qArray[i];
-        if(i == length-1){
-            qArray[i]->next = NULL;                                        //at end of file set nullptr
+    // Finds the head of the function and sets the iterator
+    l.head = numbers[0] ;
+
+    // Iterates through and pushes to list
+    for( int i = 1 ; i < length ; i++ ){
+        numbers[ i-1 ]->next = numbers[ i ] ;
+       
+       // Account for the last item in the list
+       if( i == ( length-1 ) ){
+            numbers[i]->next = NULL ;
         }
     }
+
 }

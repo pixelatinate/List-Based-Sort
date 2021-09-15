@@ -1,11 +1,19 @@
+// list.cpp
+// Worked on by all of us!
+
 #include "volsort.h"
 #include <iostream>
+#include <string>
 
+using namespace std ;
+
+// Constructor
 List::List() {
     head = NULL;
     size = 0;
 }
 
+// Destructor
 List::~List() {
     Node *curr = head;
     while(curr != 0){
@@ -15,18 +23,9 @@ List::~List() {
     } 
     head = 0;
 }
+
+// Push front function
 void List::push_front(const std::string &s){
-  /*  int value = stoi(s);
-    Node *newnode , *start;
-    start = head;
-    while (start -> next != NULL) 
-    start = start-> next ;
-    newnode = new Node ;
-    newnode -> number = (value);
-    newnode -> string = s;
-    newnode -> next = NULL;
-    start -> next =  newnode;
-	*/
 	if(head==NULL)
 	{
 		head = new Node;
@@ -46,68 +45,43 @@ void List::push_front(const std::string &s){
 	}
 }
 
+// These two functions are used in stl sort for comparing nodes
 bool node_number_compare(const Node *a, const Node *b){
-/*  int lengthA = sizeof(a);
-  int lengthB = sizeof(b);
-
-  if(lengthA > lengthB){
-    return true;
-  }
-  else if(lengthB > lengthA){
-    return false;
-  }
-      while (a != NULL && b != NULL) {
-        if (a->number > b->number)
-            return true;
-        else if (a->number < b->number)
-            return false;
-        a = a->next;
-        b = b->next;
-    }
-    return false;
-	*/
 	return a->number < b->number;
 }
 
 bool node_string_compare(const Node *a, const Node *b){
-  /*int lengthA = sizeof(a);
-  int lengthB = sizeof(b);
-
-  if(lengthA > lengthB){
-    return true;
-  }
-  else if(lengthB > lengthA){
-    return false;
-  }
-      while (a != NULL && b != NULL) {
-        if (a->string > b->string)
-            return true;
-        else if (a->string < b->string)
-            return false;
-        a = a->next;
-        b = b->next;
-    }
-    return false;
-	*/
 	return a->string < b->string;
 }
+
+// These two functions are used in the c-style q sort
 int c_node_number_compare(const void *a, const void *b){
-  return ( ( Node* ) a )->number < ( ( Node* ) b )->number ; 
+  Node *aBuff = *( Node ** ) a ;
+  Node *bBuff = *( Node ** ) b ;
+  int aNumber = aBuff->number ;
+  int bNumber = bBuff->number ;
+  return aNumber - bNumber ;
 }
 
 int c_node_string_compare(const void *a, const void *b){
-	return ( ( Node* ) a )->string < ( ( Node* ) b )->string ;
+	Node *aBuff = *( Node ** ) a ;
+  Node *bBuff = *( Node ** ) b ;
+  string aString = aBuff->string ;
+  string bString = bBuff->string ;
+  return aString.compare( bString ) ;
 }
 
-void dump_node(Node *n){					// implement in this file (volsort.h) to make it easier for TAs to grade
+// For Testing Purposes: Prints out all the integers and strings in a node
+void dump_node(Node *n){
   while(n != NULL){
-	 std::cout << "int: " << n->number << std::endl;
-	 std::cout << "string: " << n->string << std::endl;
+	 cout << "int: " << n->number << std::endl;
+	 cout << "string: " << n->string << std::endl;
 	n = n->next;
   }
 }
 
-void stl_sort(List &l, bool numeric);	// define in stl.cpp - sort using std::sort
-void qsort_sort(List &l, bool numeric);	// define in qsort.cpp - sort using qsort from cstdlib
-void merge_sort(List &l, bool numeric);	// define in merge.cpp - your implementation
-void quick_sort(List &l, bool numeric);	// define in quick.cpp - your implementation
+// All the sorts!
+void stl_sort(List &l, bool numeric);	  // define in stl.cpp    - sort using std::sort
+void qsort_sort(List &l, bool numeric);	// define in qsort.cpp  - sort using qsort from cstdlib
+void merge_sort(List &l, bool numeric);	// define in merge.cpp  - your implementation
+void quick_sort(List &l, bool numeric);	// define in quick.cpp  - your implementation
