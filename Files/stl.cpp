@@ -11,13 +11,7 @@ using namespace std;
 
 int findlength(List &head)
 {
-    int length = 0;
-    Node *main = head.head;                                                 //start at the top of the list
-    while(main != NULL){                                                    //while there is information to get cycle through
-        length++;
-        main = main->next; 
-    }
-    return length;                                                          //return the length of the list
+    return head.size;                                                          //return the length of the list
 }
 
 void stl_sort(List &l, bool numeric) { 
