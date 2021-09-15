@@ -1,5 +1,6 @@
 # List-Based-Sort
 A sorting utility called "volsort" mimics the UNIX tool "sort" with a twist: the underlying container must be a linked list.
+Written by Carter Earheart-Brown (@cearhear), Stephanie Hill (@stephhill77), Swasti Mishra (@pixelatinate), and Katie Nuchols (@knuchols).
 
 You can read more about this project here: 
 https://web.eecs.utk.edu/~semrich/cs302-21/assignments/proj02.html
