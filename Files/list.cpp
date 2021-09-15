@@ -92,11 +92,11 @@ bool node_string_compare(const Node *a, const Node *b){
 	return a->string < b->string;
 }
 int c_node_number_compare(const void *a, const void *b){
-	return 0;
+  return ( ( Node* ) a )->number < ( ( Node* ) b )->number ; 
 }
 
 int c_node_string_compare(const void *a, const void *b){
-	return 0;
+	return ( ( Node* ) a )->string < ( ( Node* ) b )->string ;
 }
 
 void dump_node(Node *n){					// implement in this file (volsort.h) to make it easier for TAs to grade

@@ -24,8 +24,13 @@ struct List {
 
 // Functions -------------------------------------------------------------------
 
+int findlength(List &head) ;
+
 bool node_number_compare(const Node *a, const Node *b); 	//implement in this file (volsort.h), used by quick, merge and stl
 bool node_string_compare(const Node *a, const Node *b);		//implement in this file (volsort.h), used by quick, merge and stl
+
+int c_node_number_compare(const void *a, const void *b) ;
+int c_node_string_compare(const void *a, const void *b) ;
 
 void dump_node(Node *n);					// implement in this file (volsort.h) to make it easier for TAs to grade
 
