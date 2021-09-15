@@ -1,9 +1,8 @@
 // merge.cpp
 
 #include "volsort.h"
-#include<iostream>
-// Prototypes
 
+// Prototypes
 Node *msort(Node *head, bool numeric);
 void  split(Node *head, Node *&left, Node *&right);
 Node *merge(Node *left, Node *right, bool numeric);
@@ -20,22 +19,17 @@ void merge_sort(List &l, bool numeric) {
 Node *msort(Node *head, bool numeric) {
 	Node* left;
 	Node* right;
-	for(Node* temp=head; temp!=NULL; temp=temp->next)
-		std::cout<< temp->number<<std::endl;
-	std::cout<<std::endl;	
+		
 	// Handles if list length is <= 1
 	if ((head == NULL) || (head->next == NULL))
 		return head;
 
 	split(head, left, right);
+	// Recursive call  
 	left = msort(left, numeric);
 	right = msort(right, numeric);
-	merge(left, right, numeric);
-//	cout<<"in recursive function";
-	std::cout<<"after merge \n";
-	for(Node* temp=head; temp!=NULL; temp=temp->next)
-		std::cout<< temp->number<<std::endl;
-	std::cout<<std::endl;	
+	head = merge(left, right, numeric);
+
 	return head;
 	
 }
@@ -64,7 +58,7 @@ void split(Node *head, Node *&left, Node *&right) {
 
 // Combines left and right lists and returns the new head
 Node *merge(Node *left, Node *right, bool numeric) {
-	Node* sorted = NULL;
+	Node* sorted = NULL; // temporary
 	Node* head=NULL;
 	// Handles if either node is empty
 	if (left == NULL)
@@ -73,9 +67,8 @@ Node *merge(Node *left, Node *right, bool numeric) {
 		return left;
 
 	while(left!=NULL && right!=NULL){
-//		cout<<"in while loop";
 		if(sorted==NULL){
-			if(numeric){
+			if(numeric){ // handles if numbers
 				if(node_number_compare(left,right)){
 					sorted = left;
 					head=sorted;
@@ -87,7 +80,7 @@ Node *merge(Node *left, Node *right, bool numeric) {
 					right=right->next;
 				}
 			}			
-			else{	
+			else{ // handles if string
 				if(node_string_compare(left, right)){
 					sorted = left;
 					head=sorted;
