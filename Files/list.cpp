@@ -31,6 +31,7 @@ void List::push_front(const std::string &s){
 		head = new Node;
 		head->string = s;
 		head->number=stoi(s);
+		head->next = NULL;
 		size=1;
 	}
 	else{

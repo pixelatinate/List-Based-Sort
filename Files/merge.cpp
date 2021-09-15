@@ -17,8 +17,8 @@ void merge_sort(List &l, bool numeric) {
 // Recursive - Calls split to divide and calls merge to conquer
 // Returns new head
 Node *msort(Node *head, bool numeric) {
-	Node* left;
-	Node* right;
+	Node* left = NULL;
+	Node* right = NULL;
 		
 	// Handles if list length is <= 1
 	if ((head == NULL) || (head->next == NULL))
@@ -43,12 +43,9 @@ void split(Node *head, Node *&left, Node *&right) {
 	fast=head->next;
 	
 	// Finds the middle of the list
-	while (fast != NULL){
-		fast = fast->next;
-		if (fast != NULL){
-			slow = slow->next;
-			fast = fast->next;
-		}
+	while (fast && fast->next != NULL){
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 	// Splits list in two at middle
 	left = head;
