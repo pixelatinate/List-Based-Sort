@@ -7,6 +7,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 int findlength(List &head)
 {
     int length = 0;

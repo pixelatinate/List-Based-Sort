@@ -14,7 +14,7 @@ Node *concatenate(Node *left, Node *right);
 // Implementations
 
 void quick_sort(List &l, bool numeric) {
-	qsort(l.head, numeric);
+	l.head = qsort(l.head, numeric);
 }
 
 Node *qsort(Node *head, bool numeric) {
@@ -37,59 +37,58 @@ Node *qsort(Node *head, bool numeric) {
 
 void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric) {
 	Node *current = pivot->next;
+	Node *leftPos, *rightPos;
 	Node *tmp;
-	Node *leftHead, *rightHead;
 	
 	//looking through list
 	while(current->next != NULL){
 		if(numeric){
 			if(node_number_compare(pivot, current)){
-				if(left == NULL){
-					leftHead = current;
+				if(left == NULL){					
 					left = current;
-					left->next = NULL;
+					leftPos = current;
 				} else {
-					left->next = current;
-					left = left->next;
+					leftPos->next = current;
+					leftPos = leftPos->next;
 				}
 			} else {
 			 	if(right == NULL){
-					rightHead = current;
 					right = current;
-					right->next = NULL;
+					rightPos = current;
 				} else {
-					right->next = current;
-					right = right->next;
+					rightPos->next = current;
+					rightPos = rightPos->next;
 				}
 			}
 		} else {
 			if(node_string_compare(pivot, current)){
 				if(left == NULL){
-					leftHead = current;
 					left = current;
-					left->next = NULL;
+					leftPos = current;
 				} else {
-					left->next = current;
-					left = left->next;
+					leftPos->next = current;
+					leftPos = leftPos->next;
 				}
 			} else {
 			 	if(right == NULL){
-					rightHead = current;
 					right = current;
-					right->next = NULL;
+					rightPos = current;
 				} else {
-					right->next = current;
-					right = right->next;
+					rightPos->next = current;
+					right = rightPos->next;
 				}
 			}
 		}
 		//increment
 		current = current->next;
 	}
-	//update leftHead and rightHead sublists and put pivot in place
+	//update end of left and right sublists and put pivot in place
 	//want to put pivot where rightHead is
-	//left = leftHead;
-	//right = rightHead;
+	left->next = NULL;
+	right->next = NULL;
+	tmp = right;
+	right = pivot;
+	right->next = tmp;
 }
 
 //joins left and right sublists
