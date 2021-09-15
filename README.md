@@ -1,6 +1,13 @@
 # List-Based-Sort
 A sorting utility called "volsort" mimics the UNIX tool "sort" with a twist: the underlying container must be a linked list.
 
+You can read more about this project here: 
+https://web.eecs.utk.edu/~semrich/cs302-21/assignments/proj02.html
+
+You can compile using "make test". 
+
+Below is a table including the time it takes to run each sort and how much memory they use. 
+
 | Mode     | Size    | Elapsed Time   | Memory Consumption  |
 |:--------:|:-------:|:--------------:|:-------------------:|
 | STL      | 10      |  0:00.00              |        3232 kB             |
