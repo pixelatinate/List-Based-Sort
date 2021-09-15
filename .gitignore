@@ -1,0 +1,11 @@
+# Dynamics Files
+dynamics_carter.txt
+dynamics_stephanie.txt
+dynamics_swasti.txt
+dynamics_katie.txt
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
