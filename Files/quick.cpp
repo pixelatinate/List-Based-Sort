@@ -1,5 +1,6 @@
 // quick.cpp
 // worked on by Carter Earheart-Brown
+// implements quick sort using a linked list using a divide and conquer strategy
 
 #include "volsort.h"
 
@@ -29,7 +30,7 @@ Node *qsort(Node *head, bool numeric) {
 	partition(head, pivot, left, right, numeric);
 	left = qsort(left,numeric);
 	right = qsort(right,numeric);
-	//need to add pivot to one of the lists before concatenate
+	//attatching pivot as head of left so it can be detached and used in concatenate
 	pivot->next = left;
 	return concatenate(pivot, right);
 }
@@ -82,15 +83,13 @@ void partition(Node *head, Node *pivot, Node *&left, Node *&right, bool numeric)
 		//increment
 		current = current->next;
 	}
-	//update end of left and right sublists and put pivot in place
-	//want to put pivot where rightHead is
+	//update end of left and right sublists
 	//check if left and right are empty 
 	if(leftPos != NULL)
 		leftPos->next = NULL;
 	if(rightPos != NULL)
 		rightPos->next = NULL;
-	//put pivot at beginning of right
-	
+		
 }
 
 //joins left and right sublists
@@ -104,7 +103,7 @@ Node *concatenate(Node *left, Node *right) {
 		pivot->next = right;
 		return pivot;
 	}	
-	//finds end of first list
+	//finds end of left list
 	while(leftPos->next != NULL)
 		leftPos = leftPos->next;
 	//joins last element of left to first element of right
